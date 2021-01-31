@@ -125,16 +125,6 @@ int main(int argc, const char *argv[])
                 
             }
 
-            // for (keypoint = keypoints.begin(); keypoint != keypoints.end(); ++keypoint)
-            // {
-            //     if (vehicleRect.contains(keypoint->pt))
-            //     {
-            //         cv::KeyPoint newKeyPoint;
-            //         newKeyPoint.pt = cv::Point2f(keypoint->pt);
-            //         newKeyPoint.size = 1;
-            //         keypoints_roi.push_back(newKeyPoint);
-            //     }
-            // }
             keypoints = newKeyPoints;
             cout << "new size of filtered point = " << keypoints.size() << " keypoints" << endl;
         }
@@ -183,10 +173,10 @@ int main(int argc, const char *argv[])
             vector<cv::DMatch> matches;
             string matcherType = "MAT_BF";        // MAT_BF, MAT_FLANN
             string descriptorType = "DES_BINARY"; // DES_BINARY, DES_HOG
-            string selectorType = "SEL_NN";       // SEL_NN, SEL_KNN
+            string selectorType = "SEL_KNN";       // SEL_NN, SEL_KNN
 
             //// STUDENT ASSIGNMENT
-            //// TASK MP.5 -> add FLANN matching in file matching2D.cpp
+            //// TASK MP.5 -> add FLANN matching in file matching2D.cpp (done)
             //// TASK MP.6 -> add KNN match selection and perform descriptor distance ratio filtering with t=0.8 in file matching2D.cpp
 
             matchDescriptors((dataBuffer.end() - 2)->keypoints, (dataBuffer.end() - 1)->keypoints,

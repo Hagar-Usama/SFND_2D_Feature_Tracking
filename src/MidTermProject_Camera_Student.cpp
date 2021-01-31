@@ -109,9 +109,34 @@ int main(int argc, const char *argv[])
         // only keep keypoints on the preceding vehicle
         bool bFocusOnVehicle = true;
         cv::Rect vehicleRect(535, 180, 180, 150);
+        vector<cv::KeyPoint> newKeyPoints;
+
         if (bFocusOnVehicle)
         {
-            // ...
+            // ... vector<cv::KeyPoint>
+
+            for (cv::KeyPoint k : keypoints)
+            {
+                if(vehicleRect.contains(k.pt)){
+                    cv::KeyPoint newKeyPoint;
+                    newKeyPoints.push_back(cv::KeyPoint(k.pt, 1));
+                
+                }
+                
+            }
+
+            // for (keypoint = keypoints.begin(); keypoint != keypoints.end(); ++keypoint)
+            // {
+            //     if (vehicleRect.contains(keypoint->pt))
+            //     {
+            //         cv::KeyPoint newKeyPoint;
+            //         newKeyPoint.pt = cv::Point2f(keypoint->pt);
+            //         newKeyPoint.size = 1;
+            //         keypoints_roi.push_back(newKeyPoint);
+            //     }
+            // }
+            keypoints = newKeyPoints;
+            cout << "new size of filtered point = " << keypoints.size() << " keypoints" << endl;
         }
 
         //// EOF STUDENT ASSIGNMENT

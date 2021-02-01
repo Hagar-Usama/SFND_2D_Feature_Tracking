@@ -126,7 +126,7 @@ int main(int argc, const char *argv[])
             }
 
             keypoints = newKeyPoints;
-            cout << "new size of filtered point = " << keypoints.size() << " keypoints" << endl;
+            cout << "# of keypoints on the preceding vehicle: " << keypoints.size() << " keypoints" << endl;
         }
 
         //// EOF STUDENT ASSIGNMENT

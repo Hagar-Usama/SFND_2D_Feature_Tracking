@@ -10,8 +10,7 @@ using namespace std;
 // using cv::ORB;
 // using cv::BRISK;
 // using cv::AKAZE;
-// using cv::FREAK; 
-
+// using cv::FREAK;
 
 // Descriptors & Dectectors
 enum Dectector
@@ -26,10 +25,8 @@ enum Dectector
     FREAK
 };
 
-
 // reference to descriptor code
 // https://github.com/oreillymedia/Learning-OpenCV-3_examples/blob/master/example_16-02.cpp
-
 
 int stringToIndex(string str)
 {
@@ -95,7 +92,7 @@ void matchDescriptors(std::vector<cv::KeyPoint> &kPtsSource, std::vector<cv::Key
         uint k = 2;
         vector<vector<cv::DMatch>> knnMatches;
         matcher->knnMatch(descSource, descRef, knnMatches, k);
-        float ratio = 0.9;
+        float ratio = 0.8;
 
         for (vector<cv::DMatch> m : knnMatches)
         {
@@ -105,6 +102,8 @@ void matchDescriptors(std::vector<cv::KeyPoint> &kPtsSource, std::vector<cv::Key
             }
         }
     }
+
+    cout << "# keypoints: " << matches.size() << endl;
 }
 
 // Use one of several types of state-of-art descriptors to uniquely identify keypoints
@@ -168,7 +167,7 @@ void descKeypoints(vector<cv::KeyPoint> &keypoints, cv::Mat &img, cv::Mat &descr
     {
         extractor = cv::AKAZE::create();
         break;
-    }    
+    }
     }
 
     // perform feature description
@@ -177,7 +176,6 @@ void descKeypoints(vector<cv::KeyPoint> &keypoints, cv::Mat &img, cv::Mat &descr
     t = ((double)cv::getTickCount() - t) / cv::getTickFrequency();
     cout << descriptorType << " descriptor extraction in " << 1000 * t / 1.0 << " ms" << endl;
 }
-
 
 // Detect keypoints in image using the traditional Shi-Thomasi detector
 void detKeypointsShiTomasi(vector<cv::KeyPoint> &keypoints, cv::Mat &img, bool bVis)
@@ -233,6 +231,8 @@ void detKeypointsModern(std::vector<cv::KeyPoint> &keypoints, cv::Mat &img, std:
     //std::cout << hashed << '\n';
 
     string windowName;
+    // dummy intialize
+    cv::Ptr<cv::FeatureDetector> detector = cv::BRISK::create();
     switch (stringToIndex(detectorType))
     {
 
@@ -242,7 +242,7 @@ void detKeypointsModern(std::vector<cv::KeyPoint> &keypoints, cv::Mat &img, std:
         std::cout << "Fast selected" << std::endl;
         int threshold = 30;
         bool bNMS = true;
-        cv::FastFeatureDetector::DetectorType type = cv::FastFeatureDetector::TYPE_9_16; // TYPE_9_16, TYPE_7_12, TYPE_5_8
+        cv::FastFeatureDetector::DetectorType type = cv::FastFeatureDetector::TYPE_9_16;
         cv::Ptr<cv::FeatureDetector> detector = cv::FastFeatureDetector::create(threshold, bNMS, type);
         break;
     }
@@ -252,7 +252,7 @@ void detKeypointsModern(std::vector<cv::KeyPoint> &keypoints, cv::Mat &img, std:
     {
         std::cout << "BRISK selected" << std::endl;
         cv::Ptr<cv::FeatureDetector> detector = cv::BRISK::create();
-        detector->detect(img, keypoints);
+        //detector->detect(img, keypoints);
         break;
     }
     case ORB:
@@ -260,7 +260,7 @@ void detKeypointsModern(std::vector<cv::KeyPoint> &keypoints, cv::Mat &img, std:
     {
         std::cout << "ORB selected" << std::endl;
         cv::Ptr<cv::FeatureDetector> detector = cv::ORB::create();
-        detector->detect(img, keypoints);
+        //detector->detect(img, keypoints);
         break;
     }
 
@@ -269,7 +269,7 @@ void detKeypointsModern(std::vector<cv::KeyPoint> &keypoints, cv::Mat &img, std:
     {
         std::cout << "AKAZE selected" << std::endl;
         cv::Ptr<cv::FeatureDetector> detector = cv::AKAZE::create();
-        detector->detect(img, keypoints);
+        //detector->detect(img, keypoints);
         break;
     }
 
@@ -278,10 +278,15 @@ void detKeypointsModern(std::vector<cv::KeyPoint> &keypoints, cv::Mat &img, std:
     {
         std::cout << "SIFT selected" << std::endl;
         cv::Ptr<cv::FeatureDetector> detector = cv::xfeatures2d::SIFT::create();
-        detector->detect(img, keypoints);
+        //detector->detect(img, keypoints);
         break;
     }
     };
+
+    double t = (double)cv::getTickCount();
+    detector->detect(img, keypoints);
+    t = ((double)cv::getTickCount() - t) / cv::getTickFrequency();
+    cout << detectorType << " detection with n: " << keypoints.size() << " keypoints in " << 1000 * t / 1.0 << " ms" << endl;
 
     windowName = detectorType;
 
@@ -306,6 +311,7 @@ void detKeypointsHarris(std::vector<cv::KeyPoint> &keypoints, cv::Mat &img, bool
     // Detect Harris corners and normalize output
     cv::Mat dst, dst_norm, dst_norm_scaled;
     dst = cv::Mat::zeros(img.size(), CV_32FC1);
+    double t = (double)cv::getTickCount();
     cv::cornerHarris(img, dst, blockSize, apertureSize, k, cv::BORDER_DEFAULT);
     cv::normalize(dst, dst_norm, 0, 255, cv::NORM_MINMAX, CV_32FC1, cv::Mat());
     cv::convertScaleAbs(dst_norm, dst_norm_scaled);
@@ -348,4 +354,16 @@ void detKeypointsHarris(std::vector<cv::KeyPoint> &keypoints, cv::Mat &img, bool
             }
         } // eof loop over cols
     }     // eof loop over rows
+    cout << "Harris detection with n: " << keypoints.size() << " keypoints in " << 1000 * t / 1.0 << " ms" << endl;
+
+    // visualize results
+    if (bVis)
+    {
+        cv::Mat visImage = img.clone();
+        cv::drawKeypoints(img, keypoints, visImage, cv::Scalar::all(-1), cv::DrawMatchesFlags::DRAW_RICH_KEYPOINTS);
+        string windowName = "Harris Corner Detector Results";
+        cv::namedWindow(windowName, 6);
+        imshow(windowName, visImage);
+        cv::waitKey(0);
+    }
 }

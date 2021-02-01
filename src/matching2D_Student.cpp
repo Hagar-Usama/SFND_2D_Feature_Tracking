@@ -260,6 +260,7 @@ void detKeypointsShiTomasi(vector<cv::KeyPoint> &keypoints, cv::Mat &img, bool b
     write_a("results.csv", to_string(t));
     write_a("results.csv", ",");
 
+    int count = 0;
     // visualize results
     if (bVis)
     {
@@ -268,6 +269,7 @@ void detKeypointsShiTomasi(vector<cv::KeyPoint> &keypoints, cv::Mat &img, bool b
         string windowName = "Shi-Tomasi Corner Detector Results";
         cv::namedWindow(windowName, 6);
         imshow(windowName, visImage);
+        imwrite("test_"+ to_string(count++) + ".jpg", visImage);
         cv::waitKey(0);
     }
 }
@@ -276,10 +278,10 @@ void detKeypointsModern(std::vector<cv::KeyPoint> &keypoints, cv::Mat &img, std:
 {
     //cout << std::stoi( detectorType ) << endl;
 
-    std::string str = "Hello World";
-    std::hash<std::string> hasher;
-    auto hashed = hasher(detectorType); //returns std::size_t
-    //std::cout << hashed << '\n';
+    // std::string str = "Hello World";
+    // std::hash<std::string> hasher;
+    // auto hashed = hasher(detectorType); //returns std::size_t
+    // //std::cout << hashed << '\n';
     //std::cout << typeof(hashed) << endl;
     //hashed = hasher("FAST");
     //std::cout << hashed << '\n';
@@ -347,13 +349,14 @@ void detKeypointsModern(std::vector<cv::KeyPoint> &keypoints, cv::Mat &img, std:
     write_a("results.csv", ",");
 
 windowName = detectorType;
-
+int count = 0;
 if (bVis)
 {
     cv::Mat visImage = img.clone();
     cv::drawKeypoints(img, keypoints, visImage, cv::Scalar::all(-1), cv::DrawMatchesFlags::DRAW_RICH_KEYPOINTS);
     cv::namedWindow(windowName, 6);
     imshow(windowName, visImage);
+    imwrite("detect_"+ to_string(count++) + ".jpg", visImage);
     cv::waitKey(0);
 }
 }
@@ -421,6 +424,7 @@ void detKeypointsHarris(std::vector<cv::KeyPoint> &keypoints, cv::Mat &img, bool
     write_a("results.csv", ",");
 
 
+    int count = 0;
     // visualize results
     if (bVis)
     {
@@ -429,6 +433,7 @@ void detKeypointsHarris(std::vector<cv::KeyPoint> &keypoints, cv::Mat &img, bool
         string windowName = "Harris Corner Detector Results";
         cv::namedWindow(windowName, 6);
         imshow(windowName, visImage);
+        imwrite("harris"+ to_string(count++) + ".jpg", visImage);
         cv::waitKey(0);
     }
 }

@@ -59,6 +59,8 @@ int main(int argc, const char *argv[])
     vector<DataFrame> dataBuffer; // list of data frames which are held in memory at the same time
     bool bVis = false;            // visualize results
 
+   
+
     write_b("results.csv", "Detector Type");
     write_b("results.csv", ",");
     write_b("results.csv", "Descriptor Type");
@@ -73,11 +75,33 @@ int main(int argc, const char *argv[])
     write_b("results.csv", "\n");
    
 
+    // // try all combinations:
+    // for (int i=0; i<detectors.size(); i++){
+        
+    //     for (int j=0; j<descriptors.size(); j++){
+
+    //         cout<< detectors[i] << "  " << descriptors[j] << endl;
+    //     }
+
+    // }
+
     /* MAIN LOOP OVER ALL IMAGES */
 
+     // lists for all possible compinations
+    vector<string> detectors{ "HARRIS", "FAST", "BRISK", "ORB", "AKAZE", "SIFT" };
+    vector<string> descriptors{ "BRISK", "BRIEF", "ORB", "FREAK", "AKAZE", "SIFT" };
     string detectorType = "HARRIS";
-    string descriptorType = "BRISK"; // BRIEF, ORB, FREAK, AKAZE, SIFT
+    string descriptorType = "AKAZE"; // BRIEF, ORB, FREAK, AKAZE, SIFT
 
+    // try all combinations:
+    // for (int i=0; i<detectors.size(); i++){
+        
+    //     for (int j=0; j<descriptors.size(); j++){
+
+    //         cout<< detectors[i] << "  " << descriptors[j] << endl;
+    //     }
+
+    // }
     for (size_t imgIndex = 0; imgIndex <= imgEndIndex - imgStartIndex; imgIndex++)
     {
 

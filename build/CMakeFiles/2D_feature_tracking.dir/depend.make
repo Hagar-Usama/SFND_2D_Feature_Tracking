@@ -3,6 +3,7 @@
 
 CMakeFiles/2D_feature_tracking.dir/src/MidTermProject_Camera_Student.cpp.o: ../src/MidTermProject_Camera_Student.cpp
 CMakeFiles/2D_feature_tracking.dir/src/MidTermProject_Camera_Student.cpp.o: ../src/dataStructures.h
+CMakeFiles/2D_feature_tracking.dir/src/MidTermProject_Camera_Student.cpp.o: ../src/helper.h
 CMakeFiles/2D_feature_tracking.dir/src/MidTermProject_Camera_Student.cpp.o: ../src/matching2D.hpp
 CMakeFiles/2D_feature_tracking.dir/src/MidTermProject_Camera_Student.cpp.o: /usr/local/include/opencv4/opencv2/calib3d.hpp
 CMakeFiles/2D_feature_tracking.dir/src/MidTermProject_Camera_Student.cpp.o: /usr/local/include/opencv4/opencv2/core.hpp
@@ -133,7 +134,11 @@ CMakeFiles/2D_feature_tracking.dir/src/MidTermProject_Camera_Student.cpp.o: /usr
 CMakeFiles/2D_feature_tracking.dir/src/MidTermProject_Camera_Student.cpp.o: /usr/local/include/opencv4/opencv2/xfeatures2d.hpp
 CMakeFiles/2D_feature_tracking.dir/src/MidTermProject_Camera_Student.cpp.o: /usr/local/include/opencv4/opencv2/xfeatures2d/nonfree.hpp
 
+CMakeFiles/2D_feature_tracking.dir/src/helper.cpp.o: ../src/helper.cpp
+CMakeFiles/2D_feature_tracking.dir/src/helper.cpp.o: ../src/helper.h
+
 CMakeFiles/2D_feature_tracking.dir/src/matching2D_Student.cpp.o: ../src/dataStructures.h
+CMakeFiles/2D_feature_tracking.dir/src/matching2D_Student.cpp.o: ../src/helper.h
 CMakeFiles/2D_feature_tracking.dir/src/matching2D_Student.cpp.o: ../src/matching2D.hpp
 CMakeFiles/2D_feature_tracking.dir/src/matching2D_Student.cpp.o: ../src/matching2D_Student.cpp
 CMakeFiles/2D_feature_tracking.dir/src/matching2D_Student.cpp.o: /usr/local/include/opencv4/opencv2/calib3d.hpp

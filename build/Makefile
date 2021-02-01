@@ -150,6 +150,33 @@ src/MidTermProject_Camera_Student.cpp.s:
 	$(MAKE) -f CMakeFiles/2D_feature_tracking.dir/build.make CMakeFiles/2D_feature_tracking.dir/src/MidTermProject_Camera_Student.cpp.s
 .PHONY : src/MidTermProject_Camera_Student.cpp.s
 
+src/helper.o: src/helper.cpp.o
+
+.PHONY : src/helper.o
+
+# target to build an object file
+src/helper.cpp.o:
+	$(MAKE) -f CMakeFiles/2D_feature_tracking.dir/build.make CMakeFiles/2D_feature_tracking.dir/src/helper.cpp.o
+.PHONY : src/helper.cpp.o
+
+src/helper.i: src/helper.cpp.i
+
+.PHONY : src/helper.i
+
+# target to preprocess a source file
+src/helper.cpp.i:
+	$(MAKE) -f CMakeFiles/2D_feature_tracking.dir/build.make CMakeFiles/2D_feature_tracking.dir/src/helper.cpp.i
+.PHONY : src/helper.cpp.i
+
+src/helper.s: src/helper.cpp.s
+
+.PHONY : src/helper.s
+
+# target to generate assembly for a file
+src/helper.cpp.s:
+	$(MAKE) -f CMakeFiles/2D_feature_tracking.dir/build.make CMakeFiles/2D_feature_tracking.dir/src/helper.cpp.s
+.PHONY : src/helper.cpp.s
+
 src/matching2D_Student.o: src/matching2D_Student.cpp.o
 
 .PHONY : src/matching2D_Student.o
@@ -189,6 +216,9 @@ help:
 	@echo "... src/MidTermProject_Camera_Student.o"
 	@echo "... src/MidTermProject_Camera_Student.i"
 	@echo "... src/MidTermProject_Camera_Student.s"
+	@echo "... src/helper.o"
+	@echo "... src/helper.i"
+	@echo "... src/helper.s"
 	@echo "... src/matching2D_Student.o"
 	@echo "... src/matching2D_Student.i"
 	@echo "... src/matching2D_Student.s"

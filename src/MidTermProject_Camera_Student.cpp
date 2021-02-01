@@ -17,6 +17,25 @@
 #include "matching2D.hpp"
 
 using namespace std;
+void write_b(string filename, string str)
+{
+
+    FILE *fp;
+
+    fp = fopen(filename.c_str(), "a");
+    if (fp == NULL)
+    {
+        perror("Error");
+        exit(1);
+    }
+    else
+    {
+
+        fprintf(fp, "%s", str.c_str());
+    }
+
+    fclose(fp);
+}
 
 /* MAIN PROGRAM */
 int main(int argc, const char *argv[])
@@ -42,8 +61,21 @@ int main(int argc, const char *argv[])
 
     /* MAIN LOOP OVER ALL IMAGES */
 
+    string detectorType = "HARRIS";
+    string descriptorType = "BRISK"; // BRIEF, ORB, FREAK, AKAZE, SIFT
+
     for (size_t imgIndex = 0; imgIndex <= imgEndIndex - imgStartIndex; imgIndex++)
     {
+
+        write_b("results.csv", "Detector Type: ");
+        write_b("results.csv", ",");
+        write_b("results.csv", detectorType);
+        write_b("results.csv", ",");
+        write_b("results.csv", "Descriptot Type: ");
+        write_b("results.csv", ",");
+        write_b("results.csv", descriptorType);
+        write_b("results.csv", ",");
+
         /* LOAD IMAGE INTO BUFFER */
 
         // assemble filenames for current index
@@ -79,7 +111,7 @@ int main(int argc, const char *argv[])
         // extract 2D keypoints from current image
         vector<cv::KeyPoint> keypoints; // create empty feature list for current image
         //string detectorType = "SHITOMASI";
-        string detectorType = "HARRIS";
+        //string detectorType = "HARRIS";
 
         //// STUDENT ASSIGNMENT
         //// TASK MP.2 -> add the following keypoint detectors in file matching2D.cpp and enable string-based selection based on detectorType
@@ -117,16 +149,19 @@ int main(int argc, const char *argv[])
 
             for (cv::KeyPoint k : keypoints)
             {
-                if(vehicleRect.contains(k.pt)){
+                if (vehicleRect.contains(k.pt))
+                {
                     cv::KeyPoint newKeyPoint;
                     newKeyPoints.push_back(cv::KeyPoint(k.pt, 1));
-                
                 }
-                
             }
 
             keypoints = newKeyPoints;
             cout << "# of keypoints on the preceding vehicle: " << keypoints.size() << " keypoints" << endl;
+            write_b("results.csv", "# of keypoints on the preceding vehicle: ");
+            write_b("results.csv", ",");
+            write_b("results.csv", to_string(keypoints.size()));
+            write_b("results.csv", ",");
         }
 
         //// EOF STUDENT ASSIGNMENT
@@ -156,7 +191,7 @@ int main(int argc, const char *argv[])
         //// -> BRIEF, ORB, FREAK, AKAZE, SIFT
 
         cv::Mat descriptors;
-        string descriptorType = "BRISK"; // BRIEF, ORB, FREAK, AKAZE, SIFT
+        //string descriptorType = "BRISK"; // BRIEF, ORB, FREAK, AKAZE, SIFT
         descKeypoints((dataBuffer.end() - 1)->keypoints, (dataBuffer.end() - 1)->cameraImg, descriptors, descriptorType);
         //// EOF STUDENT ASSIGNMENT
 
@@ -173,7 +208,7 @@ int main(int argc, const char *argv[])
             vector<cv::DMatch> matches;
             string matcherType = "MAT_BF";        // MAT_BF, MAT_FLANN
             string descriptorType = "DES_BINARY"; // DES_BINARY, DES_HOG
-            string selectorType = "SEL_KNN";       // SEL_NN, SEL_KNN
+            string selectorType = "SEL_KNN";      // SEL_NN, SEL_KNN
 
             //// STUDENT ASSIGNMENT
             //// TASK MP.5 -> add FLANN matching in file matching2D.cpp (done)

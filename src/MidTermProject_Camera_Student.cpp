@@ -18,25 +18,6 @@
 #include "helper.h"
 
 using namespace std;
-void write_b(string filename, string str)
-{
-
-    FILE *fp;
-
-    fp = fopen(filename.c_str(), "a");
-    if (fp == NULL)
-    {
-        perror("Error");
-        exit(1);
-    }
-    else
-    {
-
-        fprintf(fp, "%s", str.c_str());
-    }
-
-    fclose(fp);
-}
 
 /* MAIN PROGRAM */
 int main(int argc, const char *argv[])

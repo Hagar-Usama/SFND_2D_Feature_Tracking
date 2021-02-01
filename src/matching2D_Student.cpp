@@ -143,8 +143,8 @@ void matchDescriptors(std::vector<cv::KeyPoint> &kPtsSource, std::vector<cv::Key
     }
 
     cout << "# keypoints: " << matches.size() << endl;
-    write_a("results.csv", "# keypoints: ");
-    write_a("results.csv", ",");
+    // write_a("results.csv", "# keypoints: ");
+    // write_a("results.csv", ",");
     write_a("results.csv", to_string(matches.size()));
     write_a("results.csv", "\n");
 
@@ -221,8 +221,8 @@ void descKeypoints(vector<cv::KeyPoint> &keypoints, cv::Mat &img, cv::Mat &descr
     cout << descriptorType << " descriptor extraction in " << 1000 * t / 1.0 << " ms" << endl;
     //writeCSV("results.csv", descriptorType);
     //write_file("results.csv", descriptorType);
-    write_a("results.csv", "descriptor extraction");
-    write_a("results.csv", ",");
+    // write_a("results.csv", "descriptor extraction");
+    // write_a("results.csv", ",");
     write_a("results.csv", to_string(t));
     write_a("results.csv", ",");
 }
@@ -415,8 +415,8 @@ void detKeypointsHarris(std::vector<cv::KeyPoint> &keypoints, cv::Mat &img, bool
 
     t = ((double)cv::getTickCount() - t) / cv::getTickFrequency();
     cout << "Harris detection with n: " << keypoints.size() << " keypoints in " << 1000 * t / 1.0 << " ms" << endl;
-    write_a("results.csv", "detector extraction H");
-    write_a("results.csv", ",");
+    // write_a("results.csv", "detector extraction H");
+    // write_a("results.csv", ",");
     write_a("results.csv", to_string(t));
     write_a("results.csv", ",");
 

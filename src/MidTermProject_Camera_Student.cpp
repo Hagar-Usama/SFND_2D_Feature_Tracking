@@ -59,6 +59,20 @@ int main(int argc, const char *argv[])
     vector<DataFrame> dataBuffer; // list of data frames which are held in memory at the same time
     bool bVis = false;            // visualize results
 
+    write_b("results.csv", "Detector Type");
+    write_b("results.csv", ",");
+    write_b("results.csv", "Descriptor Type");
+    write_b("results.csv", ",");
+    write_b("results.csv", "Detector Time");
+    write_b("results.csv", ",");
+    write_b("results.csv", "Preceding Vehicle Keypoints");
+    write_b("results.csv", ",");
+    write_b("results.csv", "Descriptor Time");
+    write_b("results.csv", ",");
+    write_b("results.csv", "# Keypoints");
+    write_b("results.csv", "\n");
+   
+
     /* MAIN LOOP OVER ALL IMAGES */
 
     string detectorType = "HARRIS";
@@ -67,12 +81,12 @@ int main(int argc, const char *argv[])
     for (size_t imgIndex = 0; imgIndex <= imgEndIndex - imgStartIndex; imgIndex++)
     {
 
-        write_b("results.csv", "Detector Type: ");
-        write_b("results.csv", ",");
+        // write_b("results.csv", "Detector Type: ");
+        // write_b("results.csv", ",");
         write_b("results.csv", detectorType);
         write_b("results.csv", ",");
-        write_b("results.csv", "Descriptot Type: ");
-        write_b("results.csv", ",");
+        // write_b("results.csv", "Descriptor Type: ");
+        // write_b("results.csv", ",");
         write_b("results.csv", descriptorType);
         write_b("results.csv", ",");
 
@@ -158,8 +172,8 @@ int main(int argc, const char *argv[])
 
             keypoints = newKeyPoints;
             cout << "# of keypoints on the preceding vehicle: " << keypoints.size() << " keypoints" << endl;
-            write_b("results.csv", "# of keypoints on the preceding vehicle: ");
-            write_b("results.csv", ",");
+            // write_b("results.csv", "# of keypoints on the preceding vehicle: ");
+            // write_b("results.csv", ",");
             write_b("results.csv", to_string(keypoints.size()));
             write_b("results.csv", ",");
         }

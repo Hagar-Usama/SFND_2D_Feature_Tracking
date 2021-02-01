@@ -125,8 +125,11 @@ void matchDescriptors(std::vector<cv::KeyPoint> &kPtsSource, std::vector<cv::Key
             if (m[0].distance < (m[1].distance * ratio))
             {
                 matches.push_back(m[0]);
+               
             }
         }
+
+         cout<< "*** Neighbourhood *** " << matches.size() << endl;
     }
 
     cout << "# keypoints: " << matches.size() << endl;

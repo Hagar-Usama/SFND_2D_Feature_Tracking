@@ -86,10 +86,15 @@ int main(int argc, const char *argv[])
     /* MAIN LOOP OVER ALL IMAGES */
 
     // lists for all possible compinations
-    vector<string> detectors{"HARRIS", "FAST", "BRISK", "ORB", "AKAZE", "SIFT"};
-    //vector<string> descriptors{"BRISK", "BRIEF", "ORB", "FREAK", "AKAZE", "SIFT"};
-    vector<string> descriptors{"BRISK", "BRIEF", "ORB", "FREAK"};
+    // vector<string> detectors{"HARRIS", "FAST", "BRISK", "ORB", "AKAZE", "SIFT"};
+    // //vector<string> descriptors{"BRISK", "BRIEF", "ORB", "FREAK", "AKAZE", "SIFT"};
+    // vector<string> descriptors{"BRISK", "BRIEF", "ORB", "FREAK"};
 
+
+     vector<string> detectors{"AKAZE"};
+    vector<string> descriptors{"ORB"};
+
+    // dummy initialization
     string detectorType = "SIFT";
     string descriptorType = "BRISK"; // BRIEF, ORB, FREAK, AKAZE, SIFT
 
@@ -184,7 +189,7 @@ int main(int argc, const char *argv[])
 
                 if (bFocusOnVehicle)
                 {
-                    // ... vector<cv::KeyPoint>
+
 
                     for (cv::KeyPoint k : keypoints)
                     {

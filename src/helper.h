@@ -6,6 +6,7 @@
 #include <fstream>
 #include <string>
 
-void write_file(std::string filename, std::string str);
+//void write_file(std::string filename, std::string str);
+void write_a(std::string filename, std::string str);
 
 #endif

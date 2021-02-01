@@ -19,3 +19,5 @@ void write_a(std::string filename, std::string str)
 
     fclose(fp);
 }
+
+

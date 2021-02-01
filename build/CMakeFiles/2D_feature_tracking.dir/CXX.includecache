@@ -6,42 +6,18 @@
 
 #IncludeRegexTransform: 
 
-/home/hagar/Documents/OhMy!/Sensor_Fusion/Camera-Part/SFND_2D_Feature_Tracking/src/MidTermProject_Camera_Student.cpp
+/home/hagar/Documents/OhMy!/Sensor_Fusion/Camera-Part/SFND_2D_Feature_Tracking/src/dataStructures.h
+vector
+-
+opencv2/core.hpp
+-
+
+/home/hagar/Documents/OhMy!/Sensor_Fusion/Camera-Part/SFND_2D_Feature_Tracking/src/helper.h
 iostream
 -
 fstream
 -
-sstream
--
-iomanip
--
-vector
--
-cmath
--
-limits
--
-opencv2/core.hpp
--
-opencv2/highgui/highgui.hpp
--
-opencv2/imgproc/imgproc.hpp
--
-opencv2/features2d.hpp
--
-opencv2/xfeatures2d.hpp
--
-opencv2/xfeatures2d/nonfree.hpp
--
-dataStructures.h
-/home/hagar/Documents/OhMy!/Sensor_Fusion/Camera-Part/SFND_2D_Feature_Tracking/src/dataStructures.h
-matching2D.hpp
-/home/hagar/Documents/OhMy!/Sensor_Fusion/Camera-Part/SFND_2D_Feature_Tracking/src/matching2D.hpp
-
-/home/hagar/Documents/OhMy!/Sensor_Fusion/Camera-Part/SFND_2D_Feature_Tracking/src/dataStructures.h
-vector
--
-opencv2/core.hpp
+string
 -
 
 /home/hagar/Documents/OhMy!/Sensor_Fusion/Camera-Part/SFND_2D_Feature_Tracking/src/matching2D.hpp
@@ -73,6 +49,16 @@ opencv2/xfeatures2d/nonfree.hpp
 -
 dataStructures.h
 /home/hagar/Documents/OhMy!/Sensor_Fusion/Camera-Part/SFND_2D_Feature_Tracking/src/dataStructures.h
+
+/home/hagar/Documents/OhMy!/Sensor_Fusion/Camera-Part/SFND_2D_Feature_Tracking/src/matching2D_Student.cpp
+numeric
+-
+matching2D.hpp
+/home/hagar/Documents/OhMy!/Sensor_Fusion/Camera-Part/SFND_2D_Feature_Tracking/src/matching2D.hpp
+opencv2/features2d.hpp
+-
+helper.h
+/home/hagar/Documents/OhMy!/Sensor_Fusion/Camera-Part/SFND_2D_Feature_Tracking/src/helper.h
 
 /usr/local/include/opencv4/opencv2/calib3d.hpp
 opencv2/core.hpp

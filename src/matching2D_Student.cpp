@@ -34,38 +34,25 @@ enum Dectector
 // reference to descriptor code
 // https://github.com/oreillymedia/Learning-OpenCV-3_examples/blob/master/example_16-02.cpp
 
-void write_file(string filename, string str)
-{
+// void write_a(string filename, string str)
+// {
 
-    ofstream myfile(filename);
-    if (myfile.is_open())
-    {
-        myfile << str;
-        myfile.close();
-    }
-    else
-        cout << "Unable to open file";
-}
+//     FILE *fp;
 
-void write_a(string filename, string str)
-{
+//     fp = fopen(filename.c_str(), "a");
+//     if (fp == NULL)
+//     {
+//         perror("Error");
+//         exit(1);
+//     }
+//     else
+//     {
 
-    FILE *fp;
+//         fprintf(fp, "%s", str.c_str());
+//     }
 
-    fp = fopen(filename.c_str(), "a");
-    if (fp == NULL)
-    {
-        perror("Error");
-        exit(1);
-    }
-    else
-    {
-
-        fprintf(fp, "%s", str.c_str());
-    }
-
-    fclose(fp);
-}
+//     fclose(fp);
+// }
 
 int stringToIndex(string str)
 {
@@ -255,8 +242,8 @@ void detKeypointsShiTomasi(vector<cv::KeyPoint> &keypoints, cv::Mat &img, bool b
     }
     t = ((double)cv::getTickCount() - t) / cv::getTickFrequency();
     cout << "Shi-Tomasi detection with n=" << keypoints.size() << " keypoints in " << 1000 * t / 1.0 << " ms" << endl;
-    write_a("results.csv", "detector extraction");
-    write_a("results.csv", ",");
+    // write_a("results.csv", "detector extraction");
+    // write_a("results.csv", ",");
     write_a("results.csv", to_string(t));
     write_a("results.csv", ",");
 
@@ -269,7 +256,7 @@ void detKeypointsShiTomasi(vector<cv::KeyPoint> &keypoints, cv::Mat &img, bool b
         string windowName = "Shi-Tomasi Corner Detector Results";
         cv::namedWindow(windowName, 6);
         imshow(windowName, visImage);
-        imwrite("test_"+ to_string(count++) + ".jpg", visImage);
+        imwrite("test_"+ to_string(count++) + ".bmp", visImage);
         cv::waitKey(0);
     }
 }
@@ -343,8 +330,8 @@ void detKeypointsModern(std::vector<cv::KeyPoint> &keypoints, cv::Mat &img, std:
     detector->detect(img, keypoints);
     t = ((double)cv::getTickCount() - t) / cv::getTickFrequency();
     cout << detectorType << " detection with n: " << keypoints.size() << " keypoints in " << 1000 * t / 1.0 << " ms" << endl;
-    write_a("results.csv", "detector extraction");
-    write_a("results.csv", ",");
+    // write_a("results.csv", "detector extraction");
+    // write_a("results.csv", ",");
     write_a("results.csv", to_string(t));
     write_a("results.csv", ",");
 
@@ -356,7 +343,7 @@ if (bVis)
     cv::drawKeypoints(img, keypoints, visImage, cv::Scalar::all(-1), cv::DrawMatchesFlags::DRAW_RICH_KEYPOINTS);
     cv::namedWindow(windowName, 6);
     imshow(windowName, visImage);
-    imwrite("detect_"+ to_string(count++) + ".jpg", visImage);
+    imwrite("detect_"+ to_string(count++) + ".bmp", visImage);
     cv::waitKey(0);
 }
 }
@@ -433,7 +420,7 @@ void detKeypointsHarris(std::vector<cv::KeyPoint> &keypoints, cv::Mat &img, bool
         string windowName = "Harris Corner Detector Results";
         cv::namedWindow(windowName, 6);
         imshow(windowName, visImage);
-        imwrite("harris"+ to_string(count++) + ".jpg", visImage);
+        imwrite("harris"+ to_string(count++) + ".bmp", visImage);
         cv::waitKey(0);
     }
 }

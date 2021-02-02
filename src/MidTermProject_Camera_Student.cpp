@@ -67,13 +67,13 @@ int main(int argc, const char *argv[])
     /* MAIN LOOP OVER ALL IMAGES */
 
     // lists for all possible compinations
-    // vector<string> detectors{"HARRIS", "FAST", "BRISK", "ORB", "AKAZE", "SIFT"};
+    vector<string> detectors{"HARRIS", "FAST", "BRISK", "ORB", "AKAZE", "SIFT"};
     // //vector<string> descriptors{"BRISK", "BRIEF", "ORB", "FREAK", "AKAZE", "SIFT"};
     // vector<string> descriptors{"BRISK", "BRIEF", "ORB", "FREAK"};
 
 
-     vector<string> detectors{"AKAZE"};
-    vector<string> descriptors{"ORB"};
+    //vector<string> detectors{"AKAZE"};
+    vector<string> descriptors{"SIFT"};
 
     // dummy initialization
     string detectorType = "SIFT";
@@ -231,8 +231,8 @@ int main(int argc, const char *argv[])
                     /* MATCH KEYPOINT DESCRIPTORS */
 
                     vector<cv::DMatch> matches;
-                    string matcherType = "MAT_BF";        // MAT_BF, MAT_FLANN
-                    string descriptorType = "DES_BINARY"; // DES_BINARY, DES_HOG
+                    string matcherType = "MAT_FLANN";        // MAT_BF, MAT_FLANN
+                    string descriptorType = "DES_HOG"; // DES_BINARY, DES_HOG
                     string selectorType = "SEL_KNN";      // SEL_NN, SEL_KNN
 
                     //// STUDENT ASSIGNMENT

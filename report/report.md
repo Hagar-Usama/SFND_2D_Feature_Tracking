@@ -68,23 +68,26 @@ Count the number of matched keypoints for all 10 images using all possible combi
 * As well as logging number of keypoints, I logged time for detection and descriptor extraction. I also, stored them in the same CSV for a better comparison.
 
 the TOP3 detector / descriptor combinations: (sorted the csv)
-1. ORB + ORB
-1. AKAZE + ORB
+1. BRISK + ORB
 1. FAST + ORB
+1. ORB + ORB
+
+---
 
 ## Snapshots
 
-### ORB + ORB
-<img src="screenshots/orb-orb.png">
-<img src="screenshots/orb-orb2.png">
-<img src="screenshots/orb-orb3.png">
-
-### AKAZE + ORB
-<img src="screenshots/akaze-orb.png">
-<img src="screenshots/akaze-orb2.png">
-<img src="screenshots/akaze-orb3.png">
+### BRISK + ORB
+<img src="screenshots/brisk-orb.png">
+<img src="screenshots/brisk-orb2.png">
+<img src="screenshots/brisk-orb3.png">
 
 ### FAST + ORB
 <img src="screenshots/fast-orb.png">
 <img src="screenshots/fast-orb2.png">
 <img src="screenshots/fast-orb3.png">
+
+
+### ORB + ORB
+<img src="screenshots/orb-orb.png">
+<img src="screenshots/orb-orb2.png">
+<img src="screenshots/orb-orb3.png">
